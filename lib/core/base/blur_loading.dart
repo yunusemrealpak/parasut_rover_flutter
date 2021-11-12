@@ -17,7 +17,7 @@ class BlurLoading extends StatelessWidget {
         child: Container(
           padding: padding,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.black.withOpacity(0.5),
           ),
           child: Center(
             child: SpinKitCircle(color: context.theme.primaryColor),

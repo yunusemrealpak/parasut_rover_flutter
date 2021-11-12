@@ -14,6 +14,9 @@ abstract class BaseViewModel with ChangeNotifier {
 
   ViewState _state = ViewState.Idle;
   ViewState get state => _state;
+  
+  ViewState _moreState = ViewState.Idle;
+  ViewState get moreState => _moreState;
 
   bool disposed = false;
 
@@ -21,6 +24,11 @@ abstract class BaseViewModel with ChangeNotifier {
 
   setState(ViewState state) {
     _state = state;
+    if (!disposed) notifyListeners();
+  }
+  
+  setMoreState(ViewState state) {
+    _moreState = state;
     if (!disposed) notifyListeners();
   }
   

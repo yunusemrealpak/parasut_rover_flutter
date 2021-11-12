@@ -23,4 +23,9 @@ extension StringExtensions on String {
     var date = DateTime.parse(this);
     return "${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
   }
+  
+  String get earthDate {
+    var date = DateTime.parse(this);
+    return "${date.year.toString()}-${date.month.toString()}-${date.day.toString()}";
+  }
 }

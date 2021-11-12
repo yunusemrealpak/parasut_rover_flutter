@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -27,14 +28,21 @@ class MyApp extends StatelessWidget {
             FocusManager.instance.primaryFocus!.unfocus();
           }
         },
-        child: MaterialApp(
+        child: CupertinoApp(
           title: 'Rovers',
+          localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+            DefaultMaterialLocalizations.delegate,
+            DefaultWidgetsLocalizations.delegate,
+          ],
+          theme: CupertinoThemeData(
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: Colors.black.withOpacity(0.85),
+            textTheme: CupertinoTextThemeData(textStyle: TextStyle(color: Colors.white)),
+            primaryColor: Colors.white,
+            barBackgroundColor: Color(0xFF784319)
+          ),
           navigatorKey: NavigationService().navigatorMainKey,
-          debugShowCheckedModeBanner: false,
-          theme: theme.lightTheme,
-          darkTheme: theme.darkTheme,
-          themeMode: theme.currentTheme,
-          initialRoute: Routes.APP,
+          initialRoute: Routes.LOGIN,
           onGenerateRoute: RouteManager.generateRoute,
         ),
       ),

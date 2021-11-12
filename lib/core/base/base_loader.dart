@@ -17,34 +17,31 @@ class BaseLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Stack(
-        children: [
-          child,
-          Visibility(
-            visible: state == ViewState.Busy,
-            child: showTextArea
-                ? Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      width: context.customWidthValue(0.7),
-                      height: context.customWidthValue(0.3),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SpinKitCircle(color: context.theme.primaryColor),
-                          Text(loaderText),
-                        ],
-                      ),
+    return Stack(
+      children: [
+        child,
+        Visibility(
+          visible: state == ViewState.Busy,
+          child: showTextArea
+              ? Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                  )
-                : BlurLoading(),
-          ),
-        ],
-      ),
+                    width: context.customWidthValue(0.7),
+                    height: context.customWidthValue(0.3),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SpinKitCircle(color: context.theme.primaryColor),
+                        Text(loaderText),
+                      ],
+                    ),
+                  ),
+                )
+              : BlurLoading(),
+        ),
+      ],
     );
   }
 }

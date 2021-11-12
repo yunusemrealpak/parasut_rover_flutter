@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:parasut_rover_flutter/core/base/base_view.dart';
+import 'package:parasut_rover_flutter/core/extensions/context_extensions.dart';
 import 'package:parasut_rover_flutter/ui/app/viewmodel/app_viewmodel.dart';
 import 'package:parasut_rover_flutter/ui/rover/view/rover_view.dart';
 
@@ -55,30 +58,30 @@ class _AppViewState extends State<AppView> {
   }
   
   Widget _bottomNavigationBar(AppViewModel model) {
-    return BottomNavigationBar(
+    return CupertinoTabBar(
       currentIndex: _currentIndex,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white38,
-      type: BottomNavigationBarType.fixed,
       onTap: _jumpToPage,
       items: [
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home,
+            FontAwesomeIcons.spaceShuttle,
+            size: context.customWidthValue(0.06),
           ),
-          label: "",
+          label: "Curiosity",
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home,
+            FontAwesomeIcons.spaceShuttle,
+            size: context.customWidthValue(0.06),
           ),
-          label: "",
+          label: "Opportunity",
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home,
+            FontAwesomeIcons.spaceShuttle,
+            size: context.customWidthValue(0.06),
           ),
-          label: "",
+          label: "Spirit",
         ),
       ],
     );
