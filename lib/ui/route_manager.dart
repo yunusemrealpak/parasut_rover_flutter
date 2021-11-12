@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:parasut_rover_flutter/core/constants/navigation_constants.dart';
 import 'package:parasut_rover_flutter/ui/login/view/login_view.dart';
+import 'package:parasut_rover_flutter/ui/splash/view/splash_view.dart';
 import 'package:parasut_rover_flutter/ui/widgets/image_viewer.dart';
 
 import 'app/view/app_view.dart';
@@ -9,6 +10,11 @@ import 'app/view/app_view.dart';
 class RouteManager {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.SPLASH:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.SPLASH),
+          builder: (_) => SplashView(),
+        );
     case Routes.LOGIN:
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.LOGIN),

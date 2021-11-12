@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             barBackgroundColor: Color(0xFF784319)
           ),
           navigatorKey: NavigationService().navigatorMainKey,
-          initialRoute: Routes.LOGIN,
+          initialRoute: Routes.SPLASH,
           onGenerateRoute: RouteManager.generateRoute,
         ),
       ),
