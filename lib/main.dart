@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'core/constants/navigation_constants.dart';
 import 'core/navigation/navigation_service.dart';
+import 'core/storage/storage_service.dart';
 import 'core/theme/theme_builder.dart';
 import 'ui/route_manager.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  await StorageService().initStorage();
   runApp(MyApp());
 }
 
@@ -29,7 +34,7 @@ class MyApp extends StatelessWidget {
           theme: theme.lightTheme,
           darkTheme: theme.darkTheme,
           themeMode: theme.currentTheme,
-          initialRoute: Routes.SPLASH,
+          initialRoute: Routes.APP,
           onGenerateRoute: RouteManager.generateRoute,
         ),
       ),

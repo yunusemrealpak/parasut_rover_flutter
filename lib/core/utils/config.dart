@@ -1,4 +1,13 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Config {
-  static const baseRoverUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers";
-  static const String apiKey = "u2dOpHeOX3xPjQ7qlcLebt0RqDa123eVpuxj8kqs";
+  static String get baseRoverUrl {
+    var url = dotenv.env['BASE_URL'];
+    return url!;
+  }
+
+  static String get apiKey {
+    var key = dotenv.env['API_KEY'];
+    return key!;
+  }
 }
