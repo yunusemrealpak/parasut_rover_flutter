@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:parasut_rover_flutter/core/enum/types.dart';
 
 import '../../core/extensions/context_extensions.dart';
+import '../enum/types.dart';
 import 'blur_loading.dart';
 
 class BaseLoader extends StatelessWidget {

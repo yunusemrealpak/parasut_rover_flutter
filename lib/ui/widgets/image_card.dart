@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:parasut_rover_flutter/core/extensions/context_extensions.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+import '../../core/extensions/context_extensions.dart';
 
 class ImageCard extends StatelessWidget {
   final String source;

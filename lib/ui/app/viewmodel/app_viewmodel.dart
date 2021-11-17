@@ -1,6 +1,6 @@
-import 'package:parasut_rover_flutter/core/base/base_viewmodel.dart';
-import 'package:parasut_rover_flutter/core/enum/rover_camera.dart';
-import 'package:parasut_rover_flutter/entities/model/rover.dart';
+import '../../../core/base/base_viewmodel.dart';
+import '../../../core/enum/rover_camera.dart';
+import '../../../entities/model/rover.dart';
 
 class AppViewModel extends BaseViewModel {
   List<Rover> rovers = [

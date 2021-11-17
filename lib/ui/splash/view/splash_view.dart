@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:parasut_rover_flutter/core/base/base_view.dart';
-import 'package:parasut_rover_flutter/core/base/blur_loading.dart';
-import 'package:parasut_rover_flutter/core/constants/lottie_constants.dart';
-import 'package:parasut_rover_flutter/ui/splash/viewmodel/splash_viewmodel.dart';
+
+import '../../../core/base/base_view.dart';
+import '../../../core/base/blur_loading.dart';
+import '../../../core/constants/lottie_constants.dart';
+import '../viewmodel/splash_viewmodel.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({Key? key}) : super(key: key);

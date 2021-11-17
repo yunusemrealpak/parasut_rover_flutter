@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:parasut_rover_flutter/core/theme/theme_service.dart';
+
+import 'theme_service.dart';
 
 class ThemeController extends ChangeNotifier {
   ThemeService service = ThemeService();

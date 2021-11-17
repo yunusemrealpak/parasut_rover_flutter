@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:parasut_rover_flutter/core/constants/navigation_constants.dart';
-import 'package:parasut_rover_flutter/ui/login/view/login_view.dart';
-import 'package:parasut_rover_flutter/ui/splash/view/splash_view.dart';
-import 'package:parasut_rover_flutter/ui/widgets/image_viewer.dart';
+import 'package:parasut_rover_flutter/core/navigation/navigate_animations.dart';
+import 'package:parasut_rover_flutter/entities/dto/photo.dart';
+import 'package:parasut_rover_flutter/ui/widgets/filter/filter_view.dart';
 
+import '../core/constants/navigation_constants.dart';
 import 'app/view/app_view.dart';
+import 'login/view/login_view.dart';
+import 'splash/view/splash_view.dart';
+import 'widgets/image_viewer.dart';
 
 class RouteManager {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -26,10 +29,14 @@ class RouteManager {
           builder: (_) => AppView(),
         );
       case Routes.IMAGE_VIEWER:
-        var url = settings.arguments as String;
+        var data = settings.arguments as Photo;
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.IMAGE_VIEWER),
-          builder: (_) => ImageViewer(url: url),
+          builder: (_) => ImageViewer(photo: data),
+        );
+      case Routes.FILTER:
+        return SlideBottomRoute(
+          page: FilterView(),
         );
       default:
         return MaterialPageRoute(

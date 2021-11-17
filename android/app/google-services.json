@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "780258879495",
+    "project_id": "parasut-rover-7311a",
+    "storage_bucket": "parasut-rover-7311a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780258879495:android:569df5038faba2da34a2a2",
+        "android_client_info": {
+          "package_name": "com.rover.flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780258879495-lgj7mpvi9ij4liko6fuaqki0u8l871tm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDipqcZXIbxBKTgQGbEuF7R8qUKZqUEtCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780258879495-lgj7mpvi9ij4liko6fuaqki0u8l871tm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

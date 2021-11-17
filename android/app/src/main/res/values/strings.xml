@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Paraşüt Rover</string>
+    <string name="facebook_app_id">326578578830334</string>
+    <string name="fb_login_protocol_scheme">fb326578578830334</string>
+</resources>

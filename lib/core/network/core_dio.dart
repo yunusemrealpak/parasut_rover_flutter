@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:parasut_rover_flutter/core/network/result_model.dart';
 
 import '../enum/http_types.dart';
 import 'i_core_dio.dart';
+import 'result_model.dart';
 
 class CoreDio with DioMixin implements Dio, ICoreDio {
   final BaseOptions options;

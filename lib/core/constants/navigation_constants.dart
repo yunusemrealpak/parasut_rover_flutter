@@ -4,6 +4,7 @@ class Routes {
   static const SPLASH = "splash";
   static const LOGIN = "login";
   static const APP = "/";
+  static const FILTER = "filters";
   
   static const IMAGE_VIEWER = "image-viewer";
 }

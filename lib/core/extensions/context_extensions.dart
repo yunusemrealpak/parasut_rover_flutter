@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:parasut_rover_flutter/core/theme/theme_controller.dart';
 import 'package:provider/provider.dart';
+
+import '../theme/theme_controller.dart';
 
 extension ContextExtension on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
@@ -30,6 +32,7 @@ extension MediaQueryExtension on BuildContext {
 
 extension ThemeExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
+  CupertinoThemeData get cupertinoTheme => CupertinoTheme.of(this);
   TextTheme get textTheme => theme.textTheme;
   ColorScheme get colors => theme.colorScheme;
 }

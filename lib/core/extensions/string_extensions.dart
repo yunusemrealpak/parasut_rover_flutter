@@ -26,6 +26,6 @@ extension StringExtensions on String {
   
   String get earthDate {
     var date = DateTime.parse(this);
-    return "${date.year.toString()}-${date.month.toString()}-${date.day.toString()}";
+    return "${date.year.toString()}-${date.month.toString()}-${date.day.toString().padLeft(2, '0')}";
   }
 }

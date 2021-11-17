@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,7 +11,7 @@ import 'ui/route_manager.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: ".env.example");
   await StorageService().initStorage();
   runApp(MyApp());
 }
@@ -34,13 +35,16 @@ class MyApp extends StatelessWidget {
             DefaultMaterialLocalizations.delegate,
             DefaultWidgetsLocalizations.delegate,
           ],
+          debugShowCheckedModeBanner: false,
           theme: CupertinoThemeData(
             brightness: Brightness.dark,
             scaffoldBackgroundColor: Colors.black.withOpacity(0.85),
             textTheme: CupertinoTextThemeData(textStyle: TextStyle(color: Colors.white)),
-            primaryColor: Colors.white,
-            barBackgroundColor: Color(0xFF784319)
+            primaryColor: Color(0xFF784319),
+            barBackgroundColor: Colors.black87,
           ),
+          builder: BotToastInit(),
+          navigatorObservers: [BotToastNavigatorObserver()],
           navigatorKey: NavigationService().navigatorMainKey,
           initialRoute: Routes.SPLASH,
           onGenerateRoute: RouteManager.generateRoute,

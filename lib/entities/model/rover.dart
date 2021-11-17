@@ -1,4 +1,4 @@
-import 'package:parasut_rover_flutter/core/enum/rover_camera.dart';
+import '../../core/enum/rover_camera.dart';
 
 class Rover {
   String name;

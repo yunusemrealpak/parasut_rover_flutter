@@ -1,5 +1,5 @@
-import 'package:parasut_rover_flutter/core/base/base_service.dart';
-import 'package:parasut_rover_flutter/core/constants/storage_constants.dart';
+import '../base/base_service.dart';
+import '../constants/storage_constants.dart';
 
 class ThemeService extends BaseService {
   bool getThemeFromStorage() {

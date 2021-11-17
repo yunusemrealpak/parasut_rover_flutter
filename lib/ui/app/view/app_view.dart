@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:parasut_rover_flutter/core/base/base_view.dart';
-import 'package:parasut_rover_flutter/core/extensions/context_extensions.dart';
-import 'package:parasut_rover_flutter/ui/app/viewmodel/app_viewmodel.dart';
-import 'package:parasut_rover_flutter/ui/rover/view/rover_view.dart';
+
+import '../../../core/base/base_view.dart';
+import '../../../core/extensions/context_extensions.dart';
+import '../../rover/view/rover_view.dart';
+import '../viewmodel/app_viewmodel.dart';
 
 class AppView extends StatefulWidget {
   const AppView({Key? key}) : super(key: key);

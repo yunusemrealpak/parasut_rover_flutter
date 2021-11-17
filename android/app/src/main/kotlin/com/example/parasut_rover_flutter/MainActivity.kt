@@ -1,4 +1,4 @@
-package com.example.parasut_rover_flutter
+package com.rover.flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,45 +1,81 @@
-import 'package:parasut_rover_flutter/core/base/base_viewmodel.dart';
-import 'package:parasut_rover_flutter/core/constants/navigation_constants.dart';
-import 'package:parasut_rover_flutter/core/enum/rover_camera.dart';
-import 'package:parasut_rover_flutter/core/enum/types.dart';
-import 'package:parasut_rover_flutter/entities/dto/photo.dart';
-import 'package:parasut_rover_flutter/entities/model/photos_filter.dart';
-import 'package:parasut_rover_flutter/entities/model/rover.dart';
-import 'package:parasut_rover_flutter/ui/rover/service/rover_service.dart';
+import '../../../core/base/base_viewmodel.dart';
+import '../../../core/constants/navigation_constants.dart';
+import '../../../core/enum/types.dart';
+import '../../../entities/dto/photo.dart';
+import '../../../entities/model/photos_filter.dart';
+import '../../../entities/model/rover.dart';
+import '../service/rover_service.dart';
 
 class RoverViewModel extends BaseViewModel {
+  static const int ItemRequestThreshold = 25;
+  
   RoverService service = RoverService();
   
   late Rover rover;
   List<Photo> photos = [];
   
   // Pagination
-  int currentPage = 1;
-  
-  // Filter Datas
-  String? earthDate;
-  int? sol;
-  RoverCamera? roverCamera;
+  int _currentPage = 1;
   
   init(rover) async {
     this.rover = rover;
+    session.selectedRover = this.rover;
     setState(ViewState.Busy);
     await getGalleries();
     setState(ViewState.Idle);
   }
   
   getGalleries() async {
-    photos = await service.getPhotos(PhotosFilter(currentPage: currentPage, roverName: rover.name));
+    photos = await service.getPhotos(PhotosFilter(currentPage: _currentPage, roverName: rover.name));
+  }
+  
+  getGalleriesWithFilters() async {
+    session.filter.roverName = this.rover.name;
+    session.filter.currentPage = 1;
+    photos = await service.getPhotos(session.filter);
   }
   
   morePhotos() async {
-    currentPage++;
+    session.filter.roverName = this.rover.name;
+    session.filter.currentPage = _currentPage;
     setMoreState(ViewState.Busy);
-    photos = await service.getPhotos(PhotosFilter(currentPage: currentPage, roverName: rover.name, sol: sol, camera: roverCamera, earthDate: earthDate));
+    var newPhotos = await service.getPhotos(session.filter);
+    photos.addAll(newPhotos);
     setMoreState(ViewState.Idle);
   }
+  
+  goToFilter() {
+    nvgSrv!.navigateTo(Routes.FILTER).then((value) async {
+      if(value != null && value) {
+        refresh();
+      }
+    });
+  }
+  
+  refresh() async {
+    _currentPage = 1;
+    setState(ViewState.Busy);
+    await getGalleriesWithFilters();
+    setState(ViewState.Idle);
+  }
 
-  goToImageViewer(String? imgSrc) {
-    nvgSrv!.navigateTo(Routes.IMAGE_VIEWER, arguments: imgSrc!);
+  goToImageViewer(Photo photo) {
+    nvgSrv!.navigateTo(Routes.IMAGE_VIEWER, arguments: photo);
+  }
+
+  handleItemCreated(int index) async {
+    var itemPosition = index + 1;
+    var requestMoreData =
+        itemPosition % ItemRequestThreshold == 0 && itemPosition != 0;
+    var pageToRequest = (itemPosition ~/ ItemRequestThreshold)+1;
+    
+    print("itemPosition : $itemPosition");
+    print("requestMoreData : $requestMoreData");
+    print("pageToRequest : $pageToRequest");
+
+    if (requestMoreData && pageToRequest > _currentPage) {
+      _currentPage = pageToRequest;
+      await morePhotos();
+    }
   }
 }

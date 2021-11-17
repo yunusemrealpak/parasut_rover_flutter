@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:parasut_rover_flutter/core/utils/config.dart';
 
+import '../utils/config.dart';
 import 'core_dio.dart';
 import 'i_core_dio.dart';
 

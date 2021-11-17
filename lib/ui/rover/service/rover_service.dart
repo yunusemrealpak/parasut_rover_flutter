@@ -1,9 +1,10 @@
-import 'package:parasut_rover_flutter/core/base/base_service.dart';
 import 'package:parasut_rover_flutter/core/extensions/date_extensions.dart';
-import 'package:parasut_rover_flutter/entities/dto/photo.dart';
-import 'package:parasut_rover_flutter/entities/model/photos_filter.dart';
-import 'package:parasut_rover_flutter/ui/rover/repository/i_rover_repository.dart';
-import 'package:parasut_rover_flutter/ui/rover/repository/rover_repository.dart';
+
+import '../../../core/base/base_service.dart';
+import '../../../entities/dto/photo.dart';
+import '../../../entities/model/photos_filter.dart';
+import '../repository/i_rover_repository.dart';
+import '../repository/rover_repository.dart';
 
 class RoverService extends BaseService {
   late IRoverRepository repo;

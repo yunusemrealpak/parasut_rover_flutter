@@ -1,23 +1,39 @@
 import 'dart:async';
 
-import 'package:parasut_rover_flutter/core/base/base_viewmodel.dart';
-import 'package:parasut_rover_flutter/core/constants/navigation_constants.dart';
+import 'package:parasut_rover_flutter/ui/login/service/login_service.dart';
+
+import '../../../core/base/base_viewmodel.dart';
+import '../../../core/constants/navigation_constants.dart';
 
 class SplashViewModel extends BaseViewModel {
-  Timer? timer;
+  LoginService loginService = LoginService();
   
-  init() {
+  Timer? timer;
+  bool userLoggedIn = false;
+  
+  init() async {
+    //await checkAutoLogin();
     timer = Timer.periodic(Duration(seconds: 1), (e) {
       if(e.tick >= 4) {
         timer?.cancel();
-        goToLogin();
+        userLoggedIn ? goToMain() : goToLogin();
       }
     });
+  }
+  
+  // Future checkAutoLogin() async {
+  //   userLoggedIn = await loginService.autoLogin();
+  // }
+  
+  goToMain() {
+    nvgSrv!.navigateToReplacement(Routes.APP);
   }
   
   goToLogin() {
     nvgSrv!.navigateToReplacement(Routes.LOGIN);
   }
+  
+  
   
   @override
   void dispose() {

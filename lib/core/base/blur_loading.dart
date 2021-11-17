@@ -3,8 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../core/extensions/context_extensions.dart';
-
 class BlurLoading extends StatelessWidget {
   final Color? color;
   final EdgeInsets? padding;
@@ -21,7 +19,7 @@ class BlurLoading extends StatelessWidget {
             color: Colors.black.withOpacity(0.5),
           ),
           child: Center(
-            child: SpinKitCircle(color: color ?? context.theme.primaryColor),
+            child: SpinKitCircle(color: color ?? Color(0xFF784319)),
           ),
         ),
       ),
