@@ -2,7 +2,7 @@
     package="com.rover.flutter">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="Paraşüt Rover"
+        android:label="Rovers"
         android:icon="@mipmap/launcher_icon">
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" 
