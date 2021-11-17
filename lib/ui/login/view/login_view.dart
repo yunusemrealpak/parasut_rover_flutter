@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -15,34 +16,46 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView<LoginViewModel>(
       viewModel: LoginViewModel(),
+      onModelReady: (model) {
+        model.setContext(context);
+      },
       builder: (context, model, _) => BaseLoader(
         state: model.state,
         child: CupertinoPageScaffold(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Lottie.asset(
-                LottieConstants.ROVER_PATH,
-                repeat: true,
+              FadeIn(
+                delay: Duration(milliseconds: 350),
+                duration: Duration(milliseconds: 1200),
+                child: Lottie.asset(
+                  LottieConstants.ROVER_PATH,
+                  repeat: true,
+                ),
               ),
-              GestureDetector(
-                onTap: () => model.loginWithFacebook(),
-                child: Container(
-                  width: context.customWidthValue(0.6),
-                  height: 50,
-                  decoration: BoxDecoration(color: Color(0xFF784319), borderRadius: BorderRadius.circular(25)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.facebook),
-                      SizedBox(width: context.mediumWidthValue),
-                      Text(
-                        "Facebook ile Giriş",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    ],
+              FadeInUp(
+                delay: Duration(milliseconds: 850),
+                duration: Duration(milliseconds: 800),
+                from: 10,
+                child: GestureDetector(
+                  onTap: () => model.loginWithFacebook(),
+                  child: Container(
+                    width: context.customWidthValue(0.6),
+                    height: 50,
+                    decoration: BoxDecoration(color: Color(0xFF784319), borderRadius: BorderRadius.circular(25)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.facebook, color: Colors.white),
+                        SizedBox(width: context.mediumWidthValue),
+                        Text(
+                          "Continue with Facebook",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

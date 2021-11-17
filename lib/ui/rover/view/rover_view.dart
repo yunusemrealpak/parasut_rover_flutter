@@ -1,9 +1,13 @@
 
+import 'dart:io';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:parasut_rover_flutter/core/enum/types.dart';
 import 'package:parasut_rover_flutter/entities/dto/photo.dart';
 import 'package:parasut_rover_flutter/ui/widgets/creation_aware_list_item.dart';
 
@@ -46,33 +50,50 @@ class _RoverViewState extends State<RoverView> {
           ],
           body: BaseLoader(
             state: model.state,
-            child: Padding(
-              padding: context.paddingNormal,
-              child: StaggeredGridView.countBuilder(
-                padding: EdgeInsets.all(0),
-                crossAxisCount: 4,
-                controller: _scrollController,
-                itemCount: model.photos.length,
-                itemBuilder: (context, index) {
-                  var photo = model.photos.elementAt(index);
-                  return FadeInUp(
-                    delay: Duration(milliseconds: index * 50),
-                    duration: Duration(milliseconds: (index * 50) + 800),
-                    child: GestureDetector(
-                      onTap: () => model.goToImageViewer(photo),
-                      child: CreationAwareListItem(
-                        itemCreated: () {
-                          SchedulerBinding.instance!.addPostFrameCallback((duration) => model.handleItemCreated(index));
-                        },
-                        child: buildImage(photo),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: context.paddingNormal,
+                  child: StaggeredGridView.countBuilder(
+                    padding: EdgeInsets.all(0),
+                    crossAxisCount: 4,
+                    controller: _scrollController,
+                    itemCount: model.photos.length,
+                    itemBuilder: (context, index) {
+                      var photo = model.photos.elementAt(index);
+                      return FadeInUp(
+                        delay: Duration(milliseconds: index * 50),
+                        duration: Duration(milliseconds: (index * 50) + 800),
+                        child: GestureDetector(
+                          onTap: () => model.goToImageViewer(photo),
+                          child: CreationAwareListItem(
+                            itemCreated: () {
+                              SchedulerBinding.instance!.addPostFrameCallback((duration) => model.handleItemCreated(index));
+                            },
+                            child: buildImage(photo),
+                          ),
+                        ),
+                      );
+                    },
+                    staggeredTileBuilder: (int index) => new StaggeredTile.count(2, index.isEven ? 4 : 2),
+                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 10.0,
+                  ),
+                ),
+                Visibility(
+                  visible: model.moreState == ViewState.Busy,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      height: context.customWidthValue(0.15),
+                      color: Colors.black45,
+                      child: Center(
+                        child: Platform.isAndroid ? SpinKitCircle(color: context.cupertinoTheme.primaryColor) : CircularProgressIndicator.adaptive(),
                       ),
                     ),
-                  );
-                },
-                staggeredTileBuilder: (int index) => new StaggeredTile.count(2, index.isEven ? 4 : 2),
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-              ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

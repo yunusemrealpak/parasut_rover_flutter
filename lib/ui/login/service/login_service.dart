@@ -29,6 +29,7 @@ class LoginService extends BaseService {
         case LoginStatus.failed:
           return Failure(errorMessage: 'An error occurred. Try again');
         default:
+          return Failure(errorMessage: 'Try again');
       }
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
