@@ -17,4 +17,8 @@ class LoginViewModel extends BaseViewModel {
 
     setState(ViewState.Idle);
   }
+
+  void loginWithGuest() {
+    nvgSrv!.navigateToReplacement(Routes.APP);
+  }
 }

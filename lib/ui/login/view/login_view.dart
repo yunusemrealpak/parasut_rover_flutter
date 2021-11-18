@@ -36,7 +36,7 @@ class LoginView extends StatelessWidget {
               FadeInUp(
                 delay: Duration(milliseconds: 850),
                 duration: Duration(milliseconds: 800),
-                from: 10,
+                from: 20,
                 child: GestureDetector(
                   onTap: () => model.loginWithFacebook(),
                   child: Container(
@@ -59,6 +59,20 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
               ),
+              FadeInDown(
+                delay: Duration(milliseconds: 850),
+                duration: Duration(milliseconds: 800),
+                from: 20,
+                child: TextButton(
+                  onPressed: model.loginWithGuest,
+                  child: Text(
+                    "Continue as Guest",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

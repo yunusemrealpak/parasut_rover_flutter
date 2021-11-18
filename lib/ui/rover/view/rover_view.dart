@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -62,7 +63,7 @@ class _RoverViewState extends State<RoverView> {
                     itemBuilder: (context, index) {
                       var photo = model.photos.elementAt(index);
                       return FadeInUp(
-                        delay: Duration(milliseconds: index * 50),
+                        delay: Duration(milliseconds: 100),
                         duration: Duration(milliseconds: (index * 50) + 800),
                         child: GestureDetector(
                           onTap: () => model.goToImageViewer(photo),
@@ -104,8 +105,8 @@ class _RoverViewState extends State<RoverView> {
   Container buildImage(Photo photo) {
     return Container(
       color: Colors.black,
-      child: Image.network(
-        photo.imgSrc!,
+      child: CachedNetworkImage(
+        imageUrl: photo.imgSrc!,
         fit: BoxFit.cover,
       ),
     );
